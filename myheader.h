@@ -27,16 +27,6 @@ struct ipheader
   struct in_addr iph_destip;       // Destination IP address
 };
 
-/* ICMP Header  */
-struct icmpheader
-{
-  unsigned char icmp_type;        // ICMP message type
-  unsigned char icmp_code;        // Error code
-  unsigned short int icmp_chksum; // Checksum for ICMP Header and data
-  unsigned short int icmp_id;     // Used for identifying request
-  unsigned short int icmp_seq;    // Sequence number
-};
-
 /* UDP Header */
 struct udpheader
 {
@@ -68,15 +58,4 @@ struct tcpheader
   u_short tcp_win; /* window */
   u_short tcp_sum; /* checksum */
   u_short tcp_urp; /* urgent pointer */
-};
-
-/* Psuedo TCP header */
-struct pseudo_tcp
-{
-  unsigned saddr, daddr;
-  unsigned char mbz;
-  unsigned char ptcl;
-  unsigned short tcpl;
-  struct tcpheader tcp;
-  char payload[1500];
 };
